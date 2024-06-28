@@ -4,7 +4,6 @@
     {
         public int CodigoAtividade { get; set; }
         public string DescricaoAtividade { get; set; }
-
         public DateTime HorarioAtividade { get; set; }
         public double DuracaoAtividade { get; set;}
         public Status StatusAtividade { get; set; }
