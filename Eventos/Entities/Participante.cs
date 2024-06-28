@@ -7,11 +7,11 @@
         public TipoParticipante TipoParticipante { get; set; }
         public Agenda Agenda { get; set; }
 
-        public void Inscricao(int codigoAgenda, DateTime horarioAtividade, string descricaoAtividade, double duracaoAtividade)
+        public void Inscricao(DateTime horarioAtividade, string descricaoAtividade, double duracaoAtividade)
         {
             Agenda = new Agenda()
             {
-                 CodigoAgenda = codigoAgenda,
+                 CodigoAgenda = new Random().Next(),
                  HorarioAtividade = horarioAtividade,
                  StatusAgenda = StatusAgenda.InscricaoRealizada,
                  Atividade = new Atividade() 
