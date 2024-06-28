@@ -1,27 +1,18 @@
 ﻿namespace Eventos.Entities
 {
-    internal class Participante
+    public abstract class Participante
     {
         public int CodigoParticipante { get; set; }
         public string NomeParticipante { get; set; }
-        public TipoParticipante TipoParticipante { get; set; }
-        public Agenda Agenda { get; set; }
+        public List<Atividade> AgendaPessoal { get; set; }
 
-        public void Inscricao(int codigoAgenda, DateTime horarioAtividade, string descricaoAtividade, double duracaoAtividade)
+        public Participante(int codigoParticipante, string nomeParticipante)
         {
-            Agenda = new Agenda()
-            {
-                 CodigoAgenda = codigoAgenda,
-                 HorarioAtividade = horarioAtividade,
-                 StatusAgenda = StatusAgenda.InscricaoRealizada,
-                 Atividade = new Atividade() 
-                 { 
-                      Avaliacao = null,
-                      DescricaoAtividade = descricaoAtividade,
-                      DuracaoAtividade = duracaoAtividade,
-                      StatusAtividade = Status.AbertoInscricao
-                 },
-            };
+            CodigoParticipante = codigoParticipante;
+            NomeParticipante = nomeParticipante;
+            AgendaPessoal = new List<Atividade>();
         }
+
+        public abstract void Participar(Atividade atividade);
     }
 }

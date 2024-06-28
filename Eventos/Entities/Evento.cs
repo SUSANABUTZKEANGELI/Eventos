@@ -1,6 +1,6 @@
 ﻿namespace Eventos.Entities
 {
-    internal class Evento
+    public abstract class Evento
     {
         public string NomeEvento { get; set; }    
         public DateTime DataEvento { get; set; }
@@ -10,24 +10,20 @@
         public List<Atividade> Atividades { get; set; }
         public List<Participante> Participantes { get; set; }
 
-        public void Iniciar()
+        public Evento(string nome, DateTime data, string local, int capacidadeMaxima)
         {
+            NomeEvento = nome;
+            DataEvento = data;
+            LocalEvento = local;
             StatusEvento = Status.AbertoInscricao;
+            CapacidadeMaxima = capacidadeMaxima;
+            Participantes = new List<Participante>();
+            Atividades = new List<Atividade>();
         }
 
-        public void Pausar()
-        {
-            StatusEvento = Status.Pausado;
-        }
-
-        public void Concluir()
-        {
-            StatusEvento = Status.Finalizado;
-        }
-
-        public void Cancelar()
-        {
-            StatusEvento = Status.Cancelado;
-        }
+        public abstract void Iniciar();
+        public abstract void Pausar();
+        public abstract void Concluir();
+        public abstract void Cancelar();
     }
 }
